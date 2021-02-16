@@ -44,13 +44,16 @@ is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will
 be true"""
 if __name__ == '__main__':
 	PORT = 4    # D4
-	sensor_value = grovepi.analogRead(potentiometer)
+	#sensor_value = grovepi.analogRead(potentiometer)
+	for i in range(6):
+		oled.setTextXY(i,i)
+		oled.oled_putString("Hello World!")
 	while True:
         #So we do not poll the sensors too quickly which may introduce noise,
         #sleep for a reasonable time of 200ms between each iteration.
-		distance = ultrasonicRead(ultrasonic_ranger)
+		#distance = ultrasonicRead(ultrasonic_ranger)
 		
-		grove_oled.oled_putString(sensor_value)
+		#grove_oled.oled_putString(sensor_value)
         
         #if sensor_value < distance:
 		#	for i in range(0,9):

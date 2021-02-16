@@ -23,7 +23,7 @@ sys.path.append('../../Software/Python/')
 sys.path.append('../../Software/Python/grove_rgb_lcd')
 import grove_oled
 import grovepi
-#import grove_12_64_oled as oled
+import grove_128_64_oled as oled
 import atexit
 
 atexit.register(grovepi.encoder_dis)

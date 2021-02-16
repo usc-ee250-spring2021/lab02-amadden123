@@ -56,12 +56,7 @@ if __name__ == '__main__':
 		#	for i in range(0,9):
 		#		grove_oled.oled_setText(i,0)
 		#		grove_oled.oled_putString("OBJ PRESS")
-
-
-
-
-
-        time.sleep(0.2)
+		time.sleep(0.2)
 
         print(grovepi.ultrasonicRead(PORT))
 

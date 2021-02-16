@@ -43,23 +43,23 @@ sensor_value = 0
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
 be true"""
 if __name__ == '__main__':
-    PORT = 4    # D4
-    sensor_value = grovepi.analogRead(potentiometer)
-    while True:
+	PORT = 4    # D4
+	sensor_value = grovepi.analogRead(potentiometer)
+	while True:
         #So we do not poll the sensors too quickly which may introduce noise,
         #sleep for a reasonable time of 200ms between each iteration.
-        distance = ultrasonicRead(ultrasonic_ranger)
- 		
- 		for i in range(0,5) #Displays the current threshold value
- 			grove_oled.oled_setText(i,0)
- 			grove_oled.oled_putString(sensor_value)
+		distance = ultrasonicRead(ultrasonic_ranger)
+		
+		for i in range(0,5) #Displays the current threshold value
+			grove_oled.oled_setText(i,0)
+			grove_oled.oled_putString(sensor_value)
         
         if sensor_value < distance:
-        	for i in range(0,9):
-        		grove_oled.oled_setText(i,0)
-        		grove_oled.oled_putString("OBJ PRESS")
+			for i in range(0,9):
+				grove_oled.oled_setText(i,0)
+				grove_oled.oled_putString("OBJ PRESS")
 
-        	
+
 
 
 

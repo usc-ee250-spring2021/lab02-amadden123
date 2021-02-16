@@ -21,8 +21,23 @@ import time
 sys.path.append('../../Software/Python/')
 # This append is to support importing the LCD library.
 sys.path.append('../../Software/Python/grove_rgb_lcd')
-
+import grove_oled
 import grovepi
+import grove_12_64_oled as oled
+import atexit
+
+atexit.register(grovepi.encoder_dis)
+grovepi.encoder_en()
+
+grove_oled.oled_init()
+
+grove_oled.oled_clearDisplay()
+grove_oled.oled_setNormalDisplay()
+oled.setPageMode()
+
+ultrasonic_ranger = 4
+potentiometer = 0
+sensor_value = 0
 
 """This if-statement checks if you are running this python file directly. That 
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
@@ -33,6 +48,26 @@ if __name__ == '__main__':
     while True:
         #So we do not poll the sensors too quickly which may introduce noise,
         #sleep for a reasonable time of 200ms between each iteration.
+        distance = ultrasonicRead(ultrasonic_ranger)
+ 		sensor_value = grovepi.analogRead(potentiometer)
+ 		for i in range(0,5) #Displays the current threshold value
+ 				grove_oled.oled_setText(i,0)
+ 				grove_oled.oled_putString(sensor_value)
+
+        for i in range(0,9):
+        		grove_oled.oled_setText(i,0)
+        		grove_oled.oled_putString("OBJ PRESS")
+        if threshold < distance:
+        	for i in range(0,9):
+        		grove_oled.oled_setText(i,0)
+        		grove_oled.oled_putString("OBJ PRESS")
+
+        	
+
+
+
         time.sleep(0.2)
 
         print(grovepi.ultrasonicRead(PORT))
+
+	

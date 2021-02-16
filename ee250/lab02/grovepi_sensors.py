@@ -50,14 +50,12 @@ if __name__ == '__main__':
         #sleep for a reasonable time of 200ms between each iteration.
 		distance = ultrasonicRead(ultrasonic_ranger)
 		
-		for i in range(0,5) #Displays the current threshold value
-			grove_oled.oled_setText(i,0)
-			grove_oled.oled_putString(sensor_value)
+		grove_oled.oled_putString(sensor_value)
         
-        if sensor_value < distance:
-			for i in range(0,9):
-				grove_oled.oled_setText(i,0)
-				grove_oled.oled_putString("OBJ PRESS")
+        #if sensor_value < distance:
+		#	for i in range(0,9):
+		#		grove_oled.oled_setText(i,0)
+		#		grove_oled.oled_putString("OBJ PRESS")
 
 
 

@@ -1,1 +1,5 @@
-This is a test
+Question One: The reliability of UDP changed significantly when I added the 50 percent loss. I thought my program wasnt working at first, but I found out that my data was only output to the terminal 50 percent of the time I sent the string of numbers. This occured because there was a 50 percent data loss. 
+
+Question Two: The transmission of data did not change when I added the loss to TCP. This occured because TCP has recovery for lost packets, namely it will resend when a packet is lost with every previous packet that was sent.
+
+Question Three: The speed of TCP changed, but the difference was slight. this mightve occured because of the lost packets and the time it takes to recover them. 

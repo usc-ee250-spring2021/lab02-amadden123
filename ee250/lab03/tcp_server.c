@@ -18,17 +18,17 @@ void error(const char *msg)
 int main(int argc, char *argv[])
 {
     /* 1. What is argc and *argv[]?
-     *
+     * The argc value is the ammount of ports port and argv[] is the port number
      */
     int sockfd, newsockfd, portno;
     /* 2. What is a UNIX file descriptor and file descriptor table?
-     *
+     * A unix file descriptor refers to the file description in the kernel. The file discriptor table is the basically the container for all the descriptors 
      */
     socklen_t clilen;
 
     struct sockaddr_in serv_addr, cli_addr;
     /* 3. What is a struct? What's the structure of sockaddr_in?
-     *
+     * A struct is used to convert a string into a list of bytes. The structure of stockaddr_in is a string 
      */
     
     int n;
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     /* 4. What are the input parameters and return value of socket()
-     *
+     * AF_INET is the type of protocol used to communicate and Sock_Stream is used to indicate that it is using TCP. Socket is used to establish a connection between server and user
      */
     
     if (sockfd < 0) 
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
              sizeof(serv_addr)) < 0) 
              error("ERROR on binding");
     /* 5. What are the input parameters of bind() and listen()?
-     *
+     * The input parameters of bind are the size of the server address, the server address, and information about the incomming connection. The input parameters of listen are information about the incomming connection, and the integer 5. 
      */
     
     listen(sockfd,5);
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
     
     while(1) {
         /* 6.  Why use while(1)? Based on the code below, what problems might occur if there are multiple simultaneous connections to handle?
-        *
+        * We use while(1) to constantly look for new input connections. If two come in at the same time to handle, the program will crash because it does not know what to do. 
         */
         
 	char buffer[256];
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
                     (struct sockaddr *) &cli_addr, 
                     &clilen);
 	/* 7. Research how the command fork() works. How can it be applied here to better handle multiple connections?
-         * 
+         * the fork command duplicates the processes. This can be used to split the command and enable it to handle two connections simultaneously
          */
         
 	if (newsockfd < 0) 

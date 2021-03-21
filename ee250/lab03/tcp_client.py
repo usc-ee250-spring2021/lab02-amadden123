@@ -10,22 +10,23 @@ import socket
 def main():
 
     PORT_ADDRESS = 8080
-    HOST = '192.168.0.45'
+    HOST = '137.135.87.94'
     
     # TODO: Create a socket and connect it to the server at the designated IP and port
     
-    with socket.socket(socket.AF_INET, spcket.SOCK_STREAM) as s:
-	s.connect(HOST, PORT_ADDRESS)
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.connect((HOST, PORT_ADDRESS))
 
     # TODO: Get user input and send it to the server using your TCP socket
 
-	user_input = input()
-	s.sendall(user_input.encode('utf-9'))
+        user_input = input()
+        s.sendall(user_input.encode('utf-8'))
 
     # TODO: Receive a response from the server and close the TCP connection
 
-	response = s.recv(1024)
-	s.close()
+        response = s.recv(1024)
+        print(response)
+        s.close()
 
 if __name__ == '__main__':
     main()

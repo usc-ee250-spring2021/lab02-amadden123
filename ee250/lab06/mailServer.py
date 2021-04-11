@@ -61,7 +61,23 @@ def get_mailbox_callback():
 # Your implementation should handle reasonable error cases as well, such as an
 # incorrect password.
 
-#def search_mailbox_callback():
+def search_mailbox_callback():
+
+    password = request.args.get('password')
+    field = request.args.get('field')
+    text = request.arg.get('text')
+
+    if password == mail_pass:
+        returnedMail = mailbot_manager.get_mail (field, text)
+        response = jsonify(returnedMail)
+
+    else:
+        if password == None:
+            response = jsonify({'Response' : 'No password'})
+        else:
+            response = jsonify({'Respose' : 'Password is not correct'})
+
+    return response
 
 
 @app.route('/mailbox/delete', methods=['DELETE'])
